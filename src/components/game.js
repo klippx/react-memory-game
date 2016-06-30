@@ -11,7 +11,7 @@ export default React.createClass({
         <h1>This is the Game component</h1>
         <div className='cards'>
           {this.props.cards.map((number, i) => {
-            return <Card cardGraphic={cardGraphics[number]} number={i} />
+            return <Card key={`card-${i}`} cardGraphic={cardGraphics[number]} number={i} />
           })}
         </div>
       </div>
