@@ -5,20 +5,26 @@ import cardGraphics from '../cards'
 export default React.createClass({
   getInitialState () {
     return {
-      guessed: []
+      guessed: [],
+      correct: []
     }
   },
 
   cardGuessed (e) {
     const newState = [e.index, ...this.state.guessed];
-    this.setState({ guessed: newState });
-
-    if (newState.length == 2) {
-      setTimeout(() => this.compareCards(), 1000);
-    }
+    this.setState({ guessed: newState }, () => {
+      if (newState.length == 2) {
+        setTimeout(() => this.compareCards(), 1000);
+      }
+    });
   },
 
   compareCards () {
+    const guess1 = this.props.cards[this.state.guessed[0]];
+    const guess2 = this.props.cards[this.state.guessed[1]];
+    if (guess1 == guess2) {
+      this.setState({ correct: [guess1, ...this.state.correct] })
+    }
     this.setState({ guessed: [] })
   },
 
@@ -33,6 +39,7 @@ export default React.createClass({
                     cardGraphic={cardGraphics[number]}
                     index={i}
                     isGuessed={this.state.guessed.indexOf(i) != -1}
+                    isMatched={this.state.correct.indexOf(number) != -1}
                     onGuess={this.cardGuessed}
                   />
             )

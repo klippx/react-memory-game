@@ -19,6 +19,10 @@ export default React.createClass({
   },
 
   guessed () {
-    return this.props.isGuessed ? '' : 'rotate'
+    if (this.props.isGuessed || this.props.isMatched) {
+      return ''
+    } else {
+      return 'rotate'
+    }
   }
 })
