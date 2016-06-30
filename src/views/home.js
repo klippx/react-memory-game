@@ -1,9 +1,11 @@
+import Game from '../components/game'
 import React from 'react'
 
 export default React.createClass({
   getInitialState () {
     return {
-      gameRunning: false
+      gameRunning: false,
+      cards: [1,2,3,4,1,2,3,4,6,7,8,9,6,7,8,9]
     }
   },
 
@@ -15,7 +17,7 @@ export default React.createClass({
     )
 
     if (this.state.gameRunning) {
-      body = (<p>Placeholder for Game Component</p>)
+      body = (<Game cards={this.state.cards} />)
     }
 
     return (
