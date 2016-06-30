@@ -3,6 +3,7 @@ import Card from './card'
 import cardGraphics from '../cards'
 import GameOver from './game-over'
 import Victory from './victory'
+import Timer from './timer'
 
 export default React.createClass({
   getInitialState () {
@@ -10,7 +11,8 @@ export default React.createClass({
       allowGuess: true,
       gameOver: false,
       guessed: [],
-      correct: []
+      correct: [],
+      duration: 60
     }
   },
 
@@ -18,7 +20,7 @@ export default React.createClass({
     const newState = [e.index, ...this.state.guessed];
     if (newState.length == 2) {
       this.setState({ allowGuess: false, guessed: newState }, () => {
-        setTimeout(() => this.compareCards(), 400);
+        setTimeout(() => this.compareCards(), 500);
       })
     } else {
       this.setState({ guessed: newState })
@@ -63,7 +65,7 @@ export default React.createClass({
 
     return (
       <div className='play-view'>
-        <h1>This is the Game component</h1>
+        <Timer duration={this.state.duration} />
         <div className='cards'>
           {gameOver}
           {victoryScreen}
