@@ -12,7 +12,14 @@ export default React.createClass({
   cardGuessed (e) {
     const newState = [e.index, ...this.state.guessed];
     this.setState({ guessed: newState });
-    console.log('Card guessed', newState)
+
+    if (newState.length == 2) {
+      setTimeout(() => this.compareCards(), 1000);
+    }
+  },
+
+  compareCards () {
+    this.setState({ guessed: [] })
   },
 
   render () {
