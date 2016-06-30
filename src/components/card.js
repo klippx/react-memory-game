@@ -1,15 +1,9 @@
 import React from 'react'
 
 export default React.createClass({
-  getDefaultProps () {
-    return {
-      isFlipped: true
-    }
-  },
-
   render () {
     return (
-      <div className={this.divClassNames()}>
+      <div className={`card ${this.guessed()}`} onClick={this.guess}>
         <a>
           <div className='card-icon'
                styles={this.props.cardGraphic.backgroundColor}
@@ -20,12 +14,11 @@ export default React.createClass({
     )
   },
 
-  divClassNames () {
-    if (this.props.isFlipped) {
-      return 'card rotate'
-    } else {
-      return 'card'
-    }
+  guess () {
+    this.props.onGuess({index: this.props.index})
+  },
 
+  guessed () {
+    return this.props.isGuessed ? '' : 'rotate'
   }
 })
