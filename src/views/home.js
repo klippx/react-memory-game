@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default React.createClass({
-  getInitialState() {
+  getInitialState () {
     return {
       gameRunning: false
     }
@@ -12,10 +12,10 @@ export default React.createClass({
       <button onClick={this.startNewGame}>
         New game
       </button>
-    );
+    )
 
     if (this.state.gameRunning) {
-      body = (<p>Placeholder for Game Component</p>);
+      body = (<p>Placeholder for Game Component</p>)
     }
 
     return (
@@ -26,7 +26,7 @@ export default React.createClass({
     )
   },
 
-  startNewGame() {
+  startNewGame () {
     this.setState({gameRunning: true})
     console.log('Starting new game...')
   }
