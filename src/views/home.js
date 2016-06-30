@@ -5,7 +5,7 @@ export default React.createClass({
   getInitialState () {
     return {
       gameRunning: false,
-      cards: [1,2,3,4,1,2,3,4,6,7,8,9,6,7,8,9],
+      cards: [1,2,3,1,2,3],
     }
   },
 

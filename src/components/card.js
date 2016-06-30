@@ -6,7 +6,7 @@ export default React.createClass({
       <div className={`card ${this.guessed()}`} onClick={this.guess}>
         <a>
           <div className='card-icon'
-               styles={this.props.cardGraphic.backgroundColor}
+               style={{backgroundColor: this.props.cardGraphic.backgroundColor}}
                dangerouslySetInnerHTML={{__html: this.props.cardGraphic.svg}} />
           <h2>{this.props.cardGraphic.label}</h2>
         </a>
@@ -15,7 +15,9 @@ export default React.createClass({
   },
 
   guess () {
-    this.props.onGuess({index: this.props.index})
+    if (this.props.allowGuess) {
+      this.props.onGuess({index: this.props.index})
+    }
   },
 
   guessed () {
