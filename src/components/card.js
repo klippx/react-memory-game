@@ -2,9 +2,11 @@ import React from 'react'
 
 export default React.createClass({
   render () {
-    console.log(this.props.cardGraphic.label)
     return (
-      <p>This is card #{this.props.number}</p>
+      <div className='card'
+           styles={this.props.cardGraphic.backgroundColor}
+           dangerouslySetInnerHTML={{__html: this.props.cardGraphic.svg}}>
+      </div>
     )
   }
 })

@@ -7,7 +7,7 @@ export default React.createClass({
     console.log(this.props.cards)
 
     return (
-      <div>
+      <div className='play-view'>
         <h1>This is the Game component</h1>
         <div className='cards'>
           {this.props.cards.map((number, i) => {
